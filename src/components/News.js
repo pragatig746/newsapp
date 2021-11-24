@@ -73,13 +73,13 @@ const News = (props)=> {
         let data = await fetch(url);
         let parsedData = await data.json();
         setArticles(articles.concat(parsedData.articles));
-        setTotalResults(parsedData.totalResults)
+        
       }
     
         return (
-            <>
-                <h1 className="text-center" style={{marginTop:'90px' }}>Daily News top {capitalize(props.category)} headlines</h1>
-                {loading && <Spinner />}
+            <div className="bg-dark">
+                <h1 className="text-center" style={{marginTop:'50px' , color: 'white',fontSize:'60px',fontFamily:'revert',fontWeight:'bold'}}>Daily News top {capitalize(props.category)} headlines</h1>
+                {loading && <Spinner/>}
                 <InfiniteScroll
                 dataLength={articles.length}
                 next={fetchMoreData}
@@ -102,7 +102,7 @@ const News = (props)=> {
                 <button disabled={this.state.page<=1} type="button" className="btn btn-dark" onClick={this.handlePreviousClick}>&larr; Previous</button>
                 <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults/props.pageSize)} type="button" className="btn btn-dark" onClick={this.handleNextClick}>Next &rarr;</button>
                 </div> */}
-                </>
+                </div>
         )
 }
 
